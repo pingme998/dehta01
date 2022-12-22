@@ -1,5 +1,5 @@
 import os
-import requests
+import subprocess
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -7,9 +7,6 @@ app = FastAPI()
 @app.get("/")
 async def index():
 
-URL = "https://instagram.com/favicon.ico"
-response = requests.get(URL)
-open("instagram.ico", "wb").write(response.content)
-        
-	name = os.getenv("NAME", "world")
+        name = subprocess.check_output("echo hi", shell=True)
+
 	return f"hello {name}!"
